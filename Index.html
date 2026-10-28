@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFlow Therapy & DILASA Institute | Clinical & Institutional Mental Health</title>
+  
+  <!-- Fonts: Plus Jakarta Sans & Inter with system fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // OpenFlow Identity Palette
+            flow: {
+              teal: '#064451',
+              tealLight: '#0b5b6c',
+              tealDark: '#042e37',
+              gold: '#C49354',
+              goldHover: '#b38243',
+              linen: '#FBFBFA',
+              stone: '#F3F2EE',
+              text: '#172B30'
+            },
+            // Dilasa Identity Palette
+            dilasa: {
+              amber: '#FAA81A',
+              amberHover: '#e09411',
+              amberLight: '#FEF6E9',
+              amberMuted: '#FFF1D6',
+              black: '#121212',
+              charcoal: '#1E1E1E',
+              cream: '#FCFBF7',
+              sand: '#F7F4EB',
+              text: '#1F2937'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Complete Inlined Resilient CSS Fallback -->
+  <style>
+    /* Base Reset & Variables */
+    :root {
+      --flow-teal: #064451;
+      --flow-gold: #C49354;
+      --dilasa-amber: #FAA81A;
+      --dilasa-black: #121212;
+      --dilasa-cream: #FCFBF7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1f2937;
+      background-color: #f8fafc;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Resilient utility classes if CDN blocked */
+    .site-container { max-width: 1240px; margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+    .site-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .site-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.75rem; }
+    .site-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+    /* Custom Transitions & Interactions */
+    .btn-smooth { transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+    .btn-smooth:hover { transform: translateY(-2px); }
+    .btn-smooth:active { transform: translateY(0); }
+    
+    .card-elevated {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-elevated:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Modal Backdrop Blur */
+    .modal-backdrop {
+      background-color: rgba(10, 15, 20, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900">
+
+  <!-- ========================================================================= -->
+  <!-- 0. TOP PERSISTENT CONTROLLER & HYBRID ARCHITECTURE SWITCHER BAR           -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-slate-900 text-white border-b border-slate-800 shadow-md">
+    <div class="site-container py-2.5 px-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+      
+      <!-- Current Domain Context -->
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 font-mono text-[11px] border border-slate-700">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="activeDomainBadge">openflowtherapy.org</span>
+        </span>
+        <span class="hidden sm:inline text-slate-400 text-[11px]">
+          Hybrid Architecture: Parent Organization & Dedicated Clinical Branch
+        </span>
+      </div>
+
+      <!-- Live View Toggle Buttons -->
+      <div class="flex items-center gap-1.5 bg-slate-950 p-1 rounded-lg border border-slate-800">
+        <button 
+          id="btnViewOpenFlow"
+          onclick="switchActiveView('openflow')" 
+          class="flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition bg-[#064451] text-white shadow-sm"
+          title="View Parent Organization Website">
+          <i class="fa-solid fa-building-columns text-[10px]"></i>
+          <span>OpenFlow Therapy (Org)</span>
+        </button>
+
+        <button 
+          id="btnViewDilasa"
+          onclick="switchActiveView('dilasa')" 
+          class="flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition text-slate-300 hover:text-white hover:bg-slate-800"
+          title="View Dilasa Clinic Subdomain Portal">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span>DILASA Clinic Portal</span>
+        </button>
+      </div>
+
+      <!-- Quick Action: Direct Intake Trigger -->
+      <div class="hidden md:flex items-center gap-2">
+        <button 
+          onclick="openBookingModal('Any Available Specialist', 'Clinical Intake Consultation')"
+          class="bg-amber-500 hover:bg-amber-400 text-black font-bold px-3 py-1.5 rounded-md text-xs transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-calendar-check text-[10px]"></i>
+          <span>Book Clinical Intake</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- 1. VIEW A: OPENFLOW THERAPY (MAIN ORGANIZATION WEBSITE)                   -->
+  <!-- ========================================================================= -->
+  <main id="viewOpenFlow" class="block transition-opacity duration-300">
+    
+    <!-- OpenFlow Header & Navigation -->
+    <header class="bg-[#FBFBFA] border-b border-stone-200/80 sticky top-[49px] z-40 backdrop-blur-md bg-opacity-95">
+      <div class="site-container py-3.5 flex items-center justify-between">
+        
+        <!-- OpenFlow Exact Vector Logo -->
+        <a href="#viewOpenFlow" class="flex items-center gap-3.5 group">
+          <div class="w-12 h-12 flex-shrink-0">
+            <!-- Exact reproduction of 2.png: Petrol Teal swirl with negative space human profile & warm bronze arc -->
+            <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 250 50 C 315 50 375 80 415 130 C 445 170 455 220 445 270 C 430 345 375 410 300 440 C 235 465 155 450 100 405 C 50 365 25 305 30 240 C 35 170 80 105 145 70 C 175 55 212 49 250 50 Z" fill="#064451"/>
+              <path d="M 235 68 C 300 68 360 98 398 148 C 428 188 438 238 428 288 C 418 338 388 380 345 408 C 312 430 270 440 230 435 C 285 410 330 365 345 305 C 360 245 340 185 295 145 C 265 118 225 102 185 100 C 200 80 217 71 235 68 Z" fill="#C49354"/>
+              <!-- Negative space face profile carved in white/canvas -->
+              <path d="M 185 100 C 225 102 265 118 295 145 C 340 185 360 245 345 305 C 330 365 285 410 230 435 C 190 415 160 380 148 335 C 142 310 145 285 155 265 C 165 245 175 240 180 230 C 185 220 183 214 175 210 C 165 205 160 195 162 185 C 165 170 178 165 188 165 C 200 165 208 152 205 140 C 200 120 175 110 185 100 Z" fill="#FBFBFA"/>
+              <!-- Lower chest contour loop -->
+              <path d="M 148 335 C 160 380 190 415 230 435 C 165 420 115 375 100 310 C 95 285 98 255 110 230 C 122 255 135 295 148 335 Z" fill="#042e37"/>
+            </svg>
+          </div>
+          <div>
+            <span class="block font-bold text-xl tracking-tight text-[#064451] leading-none">OpenFlow</span>
+            <span class="block text-[10px] uppercase font-bold tracking-[0.28em] text-[#C49354] mt-0.5">T H E R A P Y</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold text-slate-700">
+          <a href="#openflow-initiatives" class="hover:text-[#064451] transition">Strategic Frameworks</a>
+          <a href="#openflow-campus" class="hover:text-[#064451] transition">Campus Drug Prevention</a>
+          <a href="#openflow-sel" class="hover:text-[#064451] transition">SEL & Youth Capacity</a>
+          <a href="#openflow-about" class="hover:text-[#064451] transition">Governance & Research</a>
+          <a href="#openflow-contact" class="hover:text-[#064451] transition">Institutional Inquiries</a>
+        </nav>
+
+        <!-- Right Action: Cross-Wing Bridge to Clinic -->
+        <div class="flex items-center gap-3">
+          <button 
+            onclick="switchActiveView('dilasa')" 
+            class="px-4 py-2 rounded-lg bg-[#C49354] hover:bg-[#b38243] text-white text-xs font-bold transition flex items-center gap-2 shadow-sm">
+            <span>Dilasa Clinical Wing</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- OpenFlow Hero Section -->
+    <section class="relative bg-gradient-to-b from-[#FBFBFA] via-[#F3F2EE] to-white py-16 sm:py-24 border-b border-stone-200">
+      <div class="site-container">
+        
+        <div class="max-w-3xl">
+          <!-- Overline Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200/80 text-[#064451] text-xs font-bold uppercase tracking-wider mb-6">
+            <i class="fa-solid fa-diagram-project text-[11px] text-[#C49354]"></i>
+            <span>Institutional Mental Health & Psychosocial Systems</span>
+          </div>
+
+          <h1 class="font-extrabold text-3xl sm:text-5xl text-[#064451] tracking-tight leading-[1.15] mb-6">
+            Bridging institutional policy, educational ecosystems, and accessible psychological care.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal mb-8 max-w-2xl">
+            OpenFlow Therapy develops multi-tier substance abuse prevention frameworks, university gatekeeper curriculums, and evidence-driven community mental health infrastructure across Jammu & Kashmir.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#openflow-initiatives" class="btn-smooth px-6 py-3.5 rounded-xl bg-[#064451] hover:bg-[#0b5b6c] text-white text-xs font-bold transition shadow-md flex items-center gap-2">
+              <span>Explore Strategic Frameworks</span>
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </a>
+
+            <!-- Directly routes to Dilasa Clinic -->
+            <button onclick="switchActiveView('dilasa')" class="btn-smooth px-6 py-3.5 rounded-xl bg-white hover:bg-stone-50 text-[#064451] border border-stone-300 text-xs font-bold transition shadow-sm flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span>Looking for In-Person Therapy? Visit Dilasa Clinic &rarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Three High-Level Mission Pillars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-12 border-t border-stone-200">
+          
+          <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-teal-50 text-[#064451] flex items-center justify-center text-lg mb-4 font-bold">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h2 class="text-base font-bold text-slate-900 mb-2">Campus Prevention SOPs</h2>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Institutional committees, peer-support safety protocols, and early screening mechanisms designed for colleges, universities, and polytechnics.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-[#C49354] flex items-center justify-center text-lg mb-4 font-bold">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h2 class="text-base font-bold text-slate-900 mb-2">SEL & Youth Capacity</h2>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Context-sensitive Social-Emotional Learning modules integrated into youth development programs, high schools, and artisan training centers.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center text-lg mb-4 font-bold">
+              <i class="fa-solid fa-house-medical"></i>
+            </div>
+            <h2 class="text-base font-bold text-slate-900 mb-2">Dedicated Clinical Practice</h2>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Direct clinical psychology delivery, neuropsychological assessments, and psychotherapy provided via the DILASA Institute in Srinagar.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OpenFlow Strategic Initiatives Section -->
+    <section id="openflow-initiatives" class="py-16 sm:py-20 bg-white">
+      <div class="site-container">
+        
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#C49354]">Ecosystem Resilience</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#064451] tracking-tight mt-1 mb-3">
+            Institutional Systems & Community Frameworks
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            We partner with higher education departments, public health officials, and non-profit organizations to convert evidence-based clinical science into sustainable public programs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Initiative 1: Campus SOPs -->
+          <div id="openflow-campus" class="p-8 rounded-3xl bg-[#FBFBFA] border border-stone-200 card-elevated">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-teal-100/70 text-[#064451]">
+                Higher Education SOP
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Framework v2.4</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Campus Substance Prevention & Crisis Networks</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+              A comprehensive multi-tier framework for universities and polytechnics. It outlines the legal, administrative, and clinical steps needed to implement proactive screenings, non-punitive support pathways, and crisis intervention teams.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-700 mb-6">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#064451] text-[11px]"></i>
+                <span>Faculty Gatekeeper & Crisis Identification Workshops</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#064451] text-[11px]"></i>
+                <span>Anonymous, Stigma-Free Student Referral Pathways</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#064451] text-[11px]"></i>
+                <span>Standardized Crisis Containment & Family Communication Guidelines</span>
+              </li>
+            </ul>
+            <a href="#openflow-contact" class="inline-flex items-center gap-2 text-xs font-bold text-[#064451] hover:underline">
+              <span>Request Institutional Implementation Guide</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+
+          <!-- Initiative 2: SEL & Youth Development -->
+          <div id="openflow-sel" class="p-8 rounded-3xl bg-[#FBFBFA] border border-stone-200 card-elevated">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-amber-100/70 text-[#b38243]">
+                Psychosocial Curriculum
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Youth & Adolescent</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Social-Emotional Learning (SEL) & Livelihoods</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+              Culturally grounded emotional regulation curricula designed for young adults in vocational and artisanal settings. Equips youth with stress management tools, emotional literacy, and peer resilience skills.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-700 mb-6">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#C49354] text-[11px]"></i>
+                <span>Contextual Psychosocial Toolkits for High School Teachers</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#C49354] text-[11px]"></i>
+                <span>Workplace Well-being for Artisan & Technical Trainees</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#C49354] text-[11px]"></i>
+                <span>Longitudinal Psychometric Impact & Resilience Tracking</span>
+              </li>
+            </ul>
+            <a href="#openflow-contact" class="inline-flex items-center gap-2 text-xs font-bold text-[#C49354] hover:underline">
+              <span>Inquire About Educational Integration</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OpenFlow Governance & Clinical Wing Bridge -->
+    <section id="openflow-about" class="py-16 bg-[#F3F2EE] border-y border-stone-200">
+      <div class="site-container">
+        
+        <div class="bg-white rounded-3xl p-8 sm:p-12 border border-stone-300/80 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          <div class="max-w-xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-100 text-amber-900 text-[11px] font-bold mb-4">
+              <span>Direct In-Person & Remote Healthcare</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#064451] tracking-tight mb-4">
+              Looking for direct clinical support, psychological assessments, or counseling?
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+              All therapeutic consultations, diagnostic neuropsychological testing batteries, and child development interventions are conducted through our specialized clinical branch: <strong>DILASA Institute for Psychological Services for Children and Adults</strong> in Srinagar.
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <button 
+                onclick="switchActiveView('dilasa')" 
+                class="btn-smooth px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition flex items-center gap-2 shadow-sm">
+                <span>Enter DILASA Clinic Portal</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+              <span class="text-xs text-slate-500">
+                Ram Bagh Bund, Srinagar • Licensed Psychologists
+              </span>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-72 p-6 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+            <div class="w-16 h-16 rounded-full bg-[#FAA81A] text-black font-extrabold text-2xl mx-auto flex items-center justify-center mb-3 shadow-inner">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h4 class="font-bold text-sm text-slate-900">DILASA Clinic</h4>
+            <p class="text-[11px] text-slate-500 mb-4">Srinagar In-Person & Encrypted Tele-Therapy</p>
+            <div class="text-[11px] text-slate-700 bg-white p-2.5 rounded-lg border border-stone-200 text-left space-y-1">
+              <div><strong class="text-slate-900">Phone:</strong> +91 9818390769</div>
+              <div><strong class="text-slate-900">Email:</strong> dilasamentalhealth@gmail.com</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OpenFlow Institutional Contact & Grant Inquiry Form -->
+    <section id="openflow-contact" class="py-16 sm:py-20 bg-white">
+      <div class="site-container max-w-4xl">
+        
+        <div class="text-center mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#064451]">Stakeholder Engagement</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            Institutional Collaboration & Consultancies
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2">
+            For academic institutions, policy bodies, NGOs, and grant evaluators seeking systemic implementation.
+          </p>
+        </div>
+
+        <form id="orgContactForm" onsubmit="handleOrgFormSubmit(event)" class="bg-[#FBFBFA] p-8 rounded-3xl border border-stone-200 shadow-sm space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Representative Name *</label>
+              <input type="text" required placeholder="Prof. / Dr. / Director..." class="w-full px-4 py-3 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#064451] focus:outline-none bg-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Official Email Address *</label>
+              <input type="email" required placeholder="name@institution.edu / .org" class="w-full px-4 py-3 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#064451] focus:outline-none bg-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Organization / College Name *</label>
+              <input type="text" required placeholder="University / Polytechnic / Organization" class="w-full px-4 py-3 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#064451] focus:outline-none bg-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Collaboration Focus *</label>
+              <select class="w-full px-4 py-3 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#064451] focus:outline-none bg-white">
+                <option>Campus Substance Abuse Prevention Framework</option>
+                <option>Faculty Gatekeeper Training Program</option>
+                <option>Social-Emotional Learning (SEL) Curriculum</option>
+                <option>Research Partnership / Longitudinal Psychometrics</option>
+                <option>Institutional Mental Health Consultancy</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Scope of Proposed Initiative *</label>
+            <textarea rows="4" required placeholder="Please outline the target demographic, institution size, and proposed objectives..." class="w-full px-4 py-3 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#064451] focus:outline-none bg-white"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+            <span class="text-[11px] text-slate-500">
+              Inquiries reviewed by OpenFlow Therapy executive team within 48 business hours.
+            </span>
+            <button type="submit" class="btn-smooth w-full sm:w-auto px-7 py-3.5 rounded-xl bg-[#064451] hover:bg-[#0b5b6c] text-white text-xs font-bold transition shadow-sm">
+              Submit Institutional Inquiry
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- OpenFlow Footer -->
+    <footer class="bg-[#042e37] text-white py-14 border-t border-teal-900">
+      <div class="site-container">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-teal-800/80">
+          
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-full bg-white/10 p-1 flex items-center justify-center">
+                <div class="w-6 h-6 rounded-full bg-[#C49354]"></div>
+              </div>
+              <span class="font-bold text-lg tracking-tight">OpenFlow Therapy</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed max-w-sm mb-4">
+              Systems-level psychosocial models, campus safety networks, and evidence-grounded mental health capacity building.
+            </p>
+            <p class="text-[11px] text-slate-400">
+              Registered Initiatives Hub: Srinagar, Jammu and Kashmir, India.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#C49354] mb-3">Institutional Pillars</h4>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li><a href="#openflow-campus" class="hover:text-white transition">Campus Prevention SOPs</a></li>
+              <li><a href="#openflow-sel" class="hover:text-white transition">SEL Curriculum Design</a></li>
+              <li><a href="#openflow-about" class="hover:text-white transition">Faculty Training</a></li>
+              <li><a href="#openflow-contact" class="hover:text-white transition">Research Collaboration</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#C49354] mb-3">Direct Healthcare</h4>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li>
+                <button onclick="switchActiveView('dilasa')" class="text-amber-300 hover:text-amber-200 font-semibold transition text-left">
+                  DILASA Clinic Portal &rarr;
+                </button>
+              </li>
+              <li><span class="text-slate-400 text-[11px]">22, Mehjoor Nagar Ram Bagh Bund, Srinagar</span></li>
+              <li><span class="text-slate-400 text-[11px]">dilasamentalhealth@gmail.com</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+          <div>&copy; 2026 OpenFlow Therapy. All rights reserved.</div>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-slate-200">Ethical Frameworks</a>
+            <a href="#" class="hover:text-slate-200">Confidentiality Protocol</a>
+            <a href="#" class="hover:text-slate-200">Governance & Compliance</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. VIEW B: DILASA CLINIC PORTAL (SUBDOMAIN LANDING PAGE)                  -->
+  <!-- ========================================================================= -->
+  <main id="viewDilasa" class="hidden transition-opacity duration-300">
+    
+    <!-- Top Subdomain Association Bar -->
+    <div class="bg-[#121212] text-slate-300 text-[11px] py-1.5 border-b border-neutral-800">
+      <div class="site-container flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span>A Clinical Psychology Initiative of <strong>OpenFlow Therapy</strong></span>
+        </div>
+        <button onclick="switchActiveView('openflow')" class="text-amber-400 hover:underline flex items-center gap-1 font-semibold">
+          <span>&larr; Return to OpenFlow Organization</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dilasa Header & Navigation -->
+    <header class="bg-[#FCFBF7] border-b border-amber-200/60 sticky top-[49px] z-40 backdrop-blur-md bg-opacity-95">
+      <div class="site-container py-3 flex items-center justify-between">
+        
+        <!-- Dilasa Exact Vector Logo from Uploaded Card / Letterhead -->
+        <a href="#viewDilasa" class="flex items-center gap-3.5 group">
+          <div class="w-13 h-13 flex-shrink-0" style="width: 52px; height: 52px;">
+            <!-- Exact vector replica of uploaded Black Mindfulness Activism Logo-photoaidcom-cropped.png -->
+            <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
+              <!-- Golden Yellow Sunburst Circle -->
+              <circle cx="250" cy="250" r="245" fill="#FAA81A"/>
+              
+              <!-- Radial Black Sunburst Rays radiating outward from shield -->
+              <g stroke="#121212" stroke-width="6.5" stroke-linecap="round">
+                <line x1="250" y1="55" x2="250" y2="92" />
+                <line x1="345" y1="75" x2="328" y2="108" />
+                <line x1="410" y1="130" x2="380" y2="155" />
+                <line x1="435" y1="205" x2="398" y2="215" />
+                <line x1="425" y1="285" x2="390" y2="275" />
+                <line x1="380" y1="360" x2="352" y2="330" />
+                <line x1="315" y1="415" x2="295" y2="380" />
+                <line x1="250" y1="435" x2="250" y2="398" />
+                <line x1="185" y1="415" x2="205" y2="380" />
+                <line x1="120" y1="360" x2="148" y2="330" />
+                <line x1="75" y1="285" x2="110" y2="275" />
+                <line x1="65" y1="205" x2="102" y2="215" />
+                <line x1="90" y1="130" x2="120" y2="155" />
+                <line x1="155" y1="75" x2="172" y2="108" />
+              </g>
+
+              <!-- Central Black Shield with Cranial Head Silhouette Curve -->
+              <path d="M 250 102 C 295 102 338 128 340 185 C 342 245 298 300 250 338 C 202 300 158 245 160 185 C 162 128 205 102 250 102 Z" fill="#121212"/>
+
+              <!-- Symmetrical Golden Brain Inside Shield with Neural Convolutions -->
+              <g stroke="#FAA81A" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Left Hemisphere -->
+                <path d="M 245 152 C 220 150 200 162 195 185 C 190 205 200 220 196 235 C 192 255 210 275 245 285" />
+                <path d="M 210 180 C 225 185 230 198 220 210 C 210 220 225 245 238 255" />
+                <path d="M 225 165 C 235 175 242 190 245 205" />
+                <path d="M 205 220 C 215 225 220 235 222 245" />
+
+                <!-- Right Hemisphere -->
+                <path d="M 255 152 C 280 150 300 162 305 185 C 310 205 300 220 304 235 C 308 255 290 275 255 285" />
+                <path d="M 290 180 C 275 185 270 198 280 210 C 290 220 275 245 262 255" />
+                <path d="M 275 165 C 265 175 258 190 255 205" />
+                <path d="M 295 220 C 285 225 280 235 278 245" />
+
+                <!-- Center Division -->
+                <line x1="250" y1="145" x2="250" y2="290" stroke-width="3" />
+              </g>
+
+              <!-- Bold Text: DILASA -->
+              <text x="250" y="395" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="78" fill="#121212" letter-spacing="1">DILASA</text>
+              
+              <!-- Tagline: GUIDING MINDS, EMPOWERING LIVES -->
+              <text x="250" y="428" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="700" font-size="19" fill="#121212" letter-spacing="1.8">GUIDING MINDS, EMPOWERING LIVES</text>
+            </svg>
+          </div>
+          <div>
+            <span class="block font-black text-lg tracking-tight text-slate-900 leading-none">DILASA</span>
+            <span class="block text-[9.5px] font-bold text-slate-600 tracking-wider uppercase mt-0.5">
+              Institute for Psychological Services for Children & Adults
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden xl:flex items-center gap-6 text-xs font-semibold text-slate-700">
+          <a href="#dilasa-specialties" class="hover:text-amber-600 transition">Clinical Specialties</a>
+          <a href="#dilasa-assessments" class="hover:text-amber-600 transition flex items-center gap-1.5 text-slate-900 font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            <span>Psychological Assessments</span>
+          </a>
+          <a href="#dilasa-team" class="hover:text-amber-600 transition">Our Clinicians</a>
+          <a href="#dilasa-process" class="hover:text-amber-600 transition">Intake Protocol</a>
+          <a href="#dilasa-fees" class="hover:text-amber-600 transition">Fees & Booking Policy</a>
+          <a href="#dilasa-faq" class="hover:text-amber-600 transition">FAQs</a>
+        </nav>
+
+        <!-- Right CTA: Mandatory Advance Booking -->
+        <div class="flex items-center gap-3">
+          <button 
+            onclick="openBookingModal('Any Available Specialist', 'Clinical Intake Consultation')" 
+            class="btn-smooth px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-calendar-check text-[11px]"></i>
+            <span>Book Appointment</span>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Dilasa Hero Section -->
+    <section class="relative bg-gradient-to-b from-[#FCFBF7] via-[#FFF8EC] to-white py-14 sm:py-20 border-b border-amber-200/50">
+      <div class="site-container">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-7">
+            <!-- Confidence / Location Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-bold mb-6">
+              <i class="fa-solid fa-location-dot text-amber-700"></i>
+              <span>Ram Bagh Bund, Srinagar • In-Person & Encrypted Video Sessions</span>
+            </div>
+
+            <h1 class="font-extrabold text-3xl sm:text-5xl text-slate-950 tracking-tight leading-[1.18] mb-5">
+              A grounded, confidential space to heal, understand, and regain clarity.
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal mb-8 max-w-xl">
+              Compassionate, evidence-based psychological support and comprehensive diagnostic evaluations for children, adolescents, and adults. You don’t have to carry emotional burdens in isolation.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 mb-8">
+              <button 
+                onclick="openBookingModal('Any Available Specialist', 'Clinical Intake Consultation')" 
+                class="btn-smooth px-6 py-3.5 rounded-xl bg-[#121212] hover:bg-slate-800 text-amber-400 text-xs font-bold transition shadow-md flex items-center gap-2">
+                <i class="fa-solid fa-lock text-xs"></i>
+                <span>Schedule Confidential Session</span>
+              </button>
+
+              <a href="#dilasa-assessments" class="btn-smooth px-6 py-3.5 rounded-xl bg-amber-100 hover:bg-amber-200/80 text-amber-950 border border-amber-300 text-xs font-bold transition flex items-center gap-2">
+                <i class="fa-solid fa-brain text-amber-700"></i>
+                <span>Explore Psychological Testing</span>
+              </a>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-amber-200/60 text-xs font-medium text-slate-600">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-shield-heart text-amber-600 text-sm"></i>
+                <span>100% Strict Clinical Confidentiality</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-award text-amber-600 text-sm"></i>
+                <span>Qualified RCI & Masters Psychologists</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-credit-card text-amber-600 text-sm"></i>
+                <span>Secured Online Advance Booking</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Right: Quick Clinic Info Card -->
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-3xl p-7 border-2 border-amber-200 shadow-md relative overflow-hidden">
+              <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-100 rounded-full blur-xl pointer-events-none"></div>
+              
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                  Clinic Consultation Hours
+                </span>
+                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  Slots Open
+                </span>
+              </div>
+
+              <div class="space-y-3.5 text-xs text-slate-700 mb-6">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-calendar-day"></i>
+                  </div>
+                  <div>
+                    <span class="font-bold text-slate-900 block">Monday to Saturday</span>
+                    <span class="text-slate-500">10:00 AM – 06:00 PM (By Pre-Booked Appointment)</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <span class="font-bold text-slate-900 block">Physical Clinic Facility</span>
+                    <span class="text-slate-500">22, Mehjoor Nagar Ram Bagh Bund, Ram Bagh, Srinagar, J&K 190001</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <span class="font-bold text-slate-900 block">Direct Clinic Line</span>
+                    <span class="text-slate-500">+91 9818390769 / dilasamentalhealth@gmail.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                onclick="openBookingModal('Any Available Specialist', 'Clinical Intake Consultation')" 
+                class="btn-smooth w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                <span>Lock Your Preferred Time Slot</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dilasa Clinical Specialties Section -->
+    <section id="dilasa-specialties" class="py-16 sm:py-20 bg-white">
+      <div class="site-container">
+        
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Focused Psychotherapy</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 mb-2">
+            Specialized Psychological Services
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Every individual experiences distress differently. We tailor therapeutic modalities (CBT, ACT, Psychodynamic, and Somatic Grounding) to match your unique lived experience.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Service 1 -->
+          <div class="p-6 rounded-3xl bg-[#FCFBF7] border border-stone-200 card-elevated flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-4 font-bold">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 mb-2">Individual Psychotherapy</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Structured support for clinical depression, anxiety disorders, social anxiety, chronic burnout, life transitions, and self-worth challenges.
+              </p>
+            </div>
+            <button onclick="openBookingModal('Any Available Specialist', 'Individual Psychotherapy (Adults)')" class="text-left text-xs font-bold text-amber-700 hover:underline flex items-center gap-1.5 pt-2 border-t border-stone-200">
+              <span>Book Individual Session &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="p-6 rounded-3xl bg-[#FCFBF7] border border-stone-200 card-elevated flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-4 font-bold">
+                <i class="fa-solid fa-child"></i>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 mb-2">Child & Adolescent Counseling</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Gentle, developmentally sensitive counseling for academic stress, behavioral concerns, ADHD coping, screen overuse, and emotional dysregulation.
+              </p>
+            </div>
+            <button onclick="openBookingModal('Any Available Specialist', 'Child & Adolescent Counseling')" class="text-left text-xs font-bold text-amber-700 hover:underline flex items-center gap-1.5 pt-2 border-t border-stone-200">
+              <span>Book Youth Session &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="p-6 rounded-3xl bg-[#FCFBF7] border border-stone-200 card-elevated flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-4 font-bold">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 mb-2">Trauma & Grief Recovery</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Paced, high-containment therapy for bereavement, complex PTSD, sudden loss, and somatic distress, anchored in emotional stabilization.
+              </p>
+            </div>
+            <button onclick="openBookingModal('Any Available Specialist', 'Trauma & Grief Recovery')" class="text-left text-xs font-bold text-amber-700 hover:underline flex items-center gap-1.5 pt-2 border-t border-stone-200">
+              <span>Book Trauma Intake &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="p-6 rounded-3xl bg-[#FCFBF7] border border-stone-200 card-elevated flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-4 font-bold">
+                <i class="fa-solid fa-people-arrows"></i>
+              </div>
+              <h3 class="font-bold text-base text-slate-900 mb-2">Couples & Family Dynamics</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Facilitated neutral dialogue to rebuild broken communication, navigate marital conflict, resolve boundary struggles, and strengthen family bonds.
+              </p>
+            </div>
+            <button onclick="openBookingModal('Any Available Specialist', 'Couples & Family Therapy')" class="text-left text-xs font-bold text-amber-700 hover:underline flex items-center gap-1.5 pt-2 border-t border-stone-200">
+              <span>Book Couples Session &rarr;</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- DILASA: PSYCHOLOGICAL ASSESSMENT & DIAGNOSTIC TESTING BATTERIES           -->
+    <!-- ========================================================================= -->
+    <section id="dilasa-assessments" class="py-16 sm:py-24 bg-gradient-to-b from-[#FFFDF9] via-[#FFF9EE] to-[#FCFBF7] border-y border-amber-200">
+      <div class="site-container">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-200/70 border border-amber-400 text-amber-900 text-xs font-bold uppercase tracking-wider mb-3">
+            <i class="fa-solid fa-microscope text-amber-800"></i>
+            <span>Standardized Diagnostic Protocols</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+            Psychological Assessment & Diagnostic Testing
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mt-3">
+            Standardized psychometric batteries administered by qualified clinical psychologists. Our evaluations provide formal differential diagnoses, cognitive baselines, school accommodations, and therapeutic roadmaps.
+          </p>
+        </div>
+
+        <!-- 4 Core Testing Batteries Grid with DIRECT BOOKING BUTTONS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          
+          <!-- Battery 1: Neurodevelopmental & Pediatric -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500 text-black flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                <i class="fa-solid fa-child-reaching"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 px-2 py-0.5 rounded text-amber-900">
+                Pediatric & Youth
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-2">
+                Neurodevelopmental Testing
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Comprehensive diagnostic batteries for children and adolescents experiencing learning, attention, or social communication differences.
+              </p>
+              
+              <ul class="text-xs text-slate-700 space-y-2 border-t border-amber-100 pt-4 mb-4">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>ADHD & Attention</strong> (Conners, Vanderbilt, Brown ADD)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Autism Spectrum</strong> (ISAA, CARS diagnostic criteria)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Dyslexia & LD</strong> (Reading, writing & math processing)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>IQ Assessment</strong> (BKT, Malin's / WISC adaptation)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-amber-100">
+              <button 
+                onclick="openBookingModal('Dr. Muzafer Khan', 'Neurodevelopmental Assessment (ADHD / Autism / LD)')" 
+                class="btn-smooth w-full py-3 rounded-xl bg-[#121212] hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-regular fa-calendar-check text-xs"></i>
+                <span>Book This Assessment</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Battery 2: Adult Psychodiagnostics & Personality -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-black text-amber-400 flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                <i class="fa-solid fa-user-gear"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 px-2 py-0.5 rounded text-amber-900">
+                Adult Diagnostics
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-2">
+                Psychodiagnostic & Personality
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Detailed diagnostic testing for clarifying complex symptoms, personality structures, chronic mood disorders, and trauma.
+              </p>
+              
+              <ul class="text-xs text-slate-700 space-y-2 border-t border-amber-100 pt-4 mb-4">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Personality Dynamics</strong> (MCMI clinical multiaxial, 16PF)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Mood & Bipolar</strong> (Affective disorder differential indices)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>OCD & Anxiety</strong> (Y-BOCS, GAD clinical scoring)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Complex Trauma</strong> (PCL-5, trauma impact scales)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-amber-100">
+              <button 
+                onclick="openBookingModal('Wijdan Haider', 'Adult Psychodiagnostic & Personality Testing')" 
+                class="btn-smooth w-full py-3 rounded-xl bg-[#121212] hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-regular fa-calendar-check text-xs"></i>
+                <span>Book This Assessment</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Battery 3: Neuropsychological & Cognitive Screening -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-500 text-black flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 px-2 py-0.5 rounded text-amber-900">
+                Cognitive Functions
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-2">
+                Neuropsychological Screening
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Objective measurement of memory, executive control, working memory, attention flexibility, and cognitive retention.
+              </p>
+              
+              <ul class="text-xs text-slate-700 space-y-2 border-t border-amber-100 pt-4 mb-4">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Working Memory</strong> (PGI Memory Scale, auditory recall)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Mental Flexibility</strong> (Stroop test, trail-making tasks)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Post-Concussion Baseline</strong> (Cognitive sequelae recovery)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Geriatric Memory</strong> (MoCA, HMSE cognitive screening)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-amber-100">
+              <button 
+                onclick="openBookingModal('Dr. Muzafer Khan', 'Neuropsychological Cognitive Screening')" 
+                class="btn-smooth w-full py-3 rounded-xl bg-[#121212] hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-regular fa-calendar-check text-xs"></i>
+                <span>Book This Assessment</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Battery 4: Career & Aptitude Profiling -->
+          <div class="bg-white rounded-3xl p-6 border-2 border-amber-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-black text-amber-400 flex items-center justify-center text-xl mb-4 font-bold shadow-sm">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 px-2 py-0.5 rounded text-amber-900">
+                Aptitude & Career
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-2">
+                Aptitude & Vocational Profiling
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Psychometrically validated guidance for school stream selection, college majors, vocational fitness, and early-career alignment.
+              </p>
+              
+              <ul class="text-xs text-slate-700 space-y-2 border-t border-amber-100 pt-4 mb-4">
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Differential Aptitude (DAT)</strong> (Spatial, mechanical, verbal)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Occupational Interest</strong> (Holland RIASEC career profile)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Study Habits Diagnosis</strong> (Academic fatigue & motivation)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-amber-600 text-[10px] mt-1"></i>
+                  <span><strong>Comprehensive Report</strong> (Actionable career pathway plan)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-amber-100">
+              <button 
+                onclick="openBookingModal('Masfah Aslam Shah', 'Aptitude & Vocational Profiling')" 
+                class="btn-smooth w-full py-3 rounded-xl bg-[#121212] hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-regular fa-calendar-check text-xs"></i>
+                <span>Book This Assessment</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-Step Clinical Assessment Protocol -->
+        <div class="bg-white rounded-3xl p-8 border border-amber-200/80 shadow-sm">
+          <h3 class="text-base font-bold text-slate-900 uppercase tracking-wider mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-amber-600"></i>
+            <span>Our 4-Stage Clinical Assessment Protocol</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-xs">
+            <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div class="w-7 h-7 rounded-full bg-amber-400 text-black font-extrabold flex items-center justify-center mb-3">1</div>
+              <h4 class="font-bold text-slate-900 mb-1">Clinical Intake & History</h4>
+              <p class="text-slate-600">Detailed developmental, family, and educational timeline review with the psychologist.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div class="w-7 h-7 rounded-full bg-amber-400 text-black font-extrabold flex items-center justify-center mb-3">2</div>
+              <h4 class="font-bold text-slate-900 mb-1">In-Person Test Battery</h4>
+              <p class="text-slate-600">Standardized testing administered in a quiet, distraction-free clinical environment.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div class="w-7 h-7 rounded-full bg-amber-400 text-black font-extrabold flex items-center justify-center mb-3">3</div>
+              <h4 class="font-bold text-slate-900 mb-1">Scoring & Analysis</h4>
+              <p class="text-slate-600">Normative data compilation, psychometric reliability checks, and differential diagnosis.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stone-50 border border-stone-200">
+              <div class="w-7 h-7 rounded-full bg-amber-400 text-black font-extrabold flex items-center justify-center mb-3">4</div>
+              <h4 class="font-bold text-slate-900 mb-1">Formal Report & Feedback</h4>
+              <p class="text-slate-600">Official certified report with school/exam accommodation recommendations and debrief.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dilasa Team & Clinician Directory -->
+    <section id="dilasa-team" class="py-16 sm:py-20 bg-white">
+      <div class="site-container">
+        
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Clinical Governance</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 mb-2">
+            Meet Our Practitioners
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Our multidisciplinary team holds recognized clinical and counseling credentials, with a strict commitment to clinical ethics, ongoing supervision, and patient empathy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Wijdan Haider -->
+          <div class="bg-[#FCFBF7] rounded-3xl p-6 border border-stone-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black mb-4">
+                WH
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded">
+                Founder / MD
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-0.5">Wijdan Haider</h3>
+              <p class="text-xs text-amber-800 font-semibold mb-3">Managing Director & Psychologist</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Specializes in adult individual therapy, systems-level mental health initiatives, trauma processing, and institutional program design.
+              </p>
+              <div class="text-[11px] text-slate-500 space-y-1 mb-4 border-t border-stone-200 pt-3">
+                <div><i class="fa-solid fa-phone text-amber-600 text-[10px] mr-1.5"></i> +91 9818390769</div>
+                <div><i class="fa-solid fa-envelope text-amber-600 text-[10px] mr-1.5"></i> wijdanhaider1712@gmail.com</div>
+              </div>
+            </div>
+            <button 
+              onclick="openBookingModal('Wijdan Haider', 'Individual Psychotherapy (Adults)')" 
+              class="btn-smooth w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-1.5">
+              <span>Book with Wijdan &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Dr. Muzafer Khan -->
+          <div class="bg-[#FCFBF7] rounded-3xl p-6 border border-stone-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black mb-4">
+                MK
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded">
+                Co-Founder
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-0.5">Dr. Muzafer Khan</h3>
+              <p class="text-xs text-amber-800 font-semibold mb-3">Consultant Clinical Psychologist</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Decades of pioneering clinical practice in psychiatric rehabilitation, substance addiction medicine, neuropsychological evaluations, and complex psychopathology.
+              </p>
+              <div class="text-[11px] text-slate-500 space-y-1 mb-4 border-t border-stone-200 pt-3">
+                <div><i class="fa-solid fa-phone text-amber-600 text-[10px] mr-1.5"></i> +91 9419408588</div>
+                <div><i class="fa-solid fa-envelope text-amber-600 text-[10px] mr-1.5"></i> khn_mzfr@yahoo.co.in</div>
+              </div>
+            </div>
+            <button 
+              onclick="openBookingModal('Dr. Muzafer Khan', 'Clinical Diagnostic Consultation')" 
+              class="btn-smooth w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-1.5">
+              <span>Book with Dr. Khan &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Masfah Aslam Shah -->
+          <div class="bg-[#FCFBF7] rounded-3xl p-6 border border-stone-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black mb-4">
+                MS
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded">
+                Program Lead
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-0.5">Masfah Aslam Shah</h3>
+              <p class="text-xs text-amber-800 font-semibold mb-3">Counseling Psychologist</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Leads child and youth counseling, school mental health screening frameworks, career aptitude profiling, and youth social-emotional development.
+              </p>
+              <div class="text-[11px] text-slate-500 space-y-1 mb-4 border-t border-stone-200 pt-3">
+                <div><i class="fa-solid fa-phone text-amber-600 text-[10px] mr-1.5"></i> +91 8825095270</div>
+                <div><i class="fa-solid fa-envelope text-amber-600 text-[10px] mr-1.5"></i> shahmasfah@gmail.com</div>
+              </div>
+            </div>
+            <button 
+              onclick="openBookingModal('Masfah Aslam Shah', 'Child & Adolescent Counseling')" 
+              class="btn-smooth w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-1.5">
+              <span>Book with Masfah &rarr;</span>
+            </button>
+          </div>
+
+          <!-- Kulsum Bhat -->
+          <div class="bg-[#FCFBF7] rounded-3xl p-6 border border-stone-200 flex flex-col justify-between card-elevated">
+            <div>
+              <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-black mb-4">
+                KB
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded">
+                Co-Founder
+              </span>
+              <h3 class="font-bold text-lg text-slate-900 mt-2 mb-0.5">Kulsum Bhat</h3>
+              <p class="text-xs text-amber-800 font-semibold mb-3">Counseling Psychologist</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Expert in relationship counseling, young adult identity transitions, emotional burnout, women's mental health, and expressive arts therapy.
+              </p>
+              <div class="text-[11px] text-slate-500 space-y-1 mb-4 border-t border-stone-200 pt-3">
+                <div><i class="fa-solid fa-phone text-amber-600 text-[10px] mr-1.5"></i> +91 7780806065</div>
+                <div><i class="fa-solid fa-envelope text-amber-600 text-[10px] mr-1.5"></i> fazalkulsum@gmail.com</div>
+              </div>
+            </div>
+            <button 
+              onclick="openBookingModal('Kulsum Bhat', 'Couples & Relationship Counseling')" 
+              class="btn-smooth w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold transition flex items-center justify-center gap-1.5">
+              <span>Book with Kulsum &rarr;</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dilasa Fees, Booking Policy & Mandatory Advance Digital Payment -->
+    <section id="dilasa-fees" class="py-16 sm:py-20 bg-[#FCFBF7] border-y border-amber-200/80">
+      <div class="site-container">
+        
+        <div class="max-w-2xl mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Financial Transparency</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 mb-2">
+            Session Fees & Advance Booking Policy
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            To ensure clinicians can dedicate focused preparation to every client and eliminate last-minute cancellations, <strong>all appointments require digital advance payment</strong> via instant UPI QR or NetBanking. <em>(Cash on arrival is not supported).</em>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          
+          <div class="bg-white p-6 rounded-3xl border border-stone-300 shadow-sm">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Standard Intake</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">First Assessment Session</h3>
+            <div class="text-2xl font-black text-amber-600 mb-3">₹ 1,500 <span class="text-xs font-normal text-slate-500">/ 50 mins</span></div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Comprehensive psychosocial evaluation, presenting concerns mapping, and customized treatment planning with your primary psychologist.
+            </p>
+            <button onclick="openBookingModal('', 'Clinical Intake Consultation')" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+              Book Intake Session
+            </button>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border-2 border-amber-400 shadow-md relative">
+            <div class="absolute -top-3 right-6 bg-black text-amber-400 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">
+              Most Common
+            </div>
+            <span class="text-[10px] font-bold text-amber-700 uppercase tracking-wider block mb-1">Ongoing Therapy</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Individual Psychotherapy</h3>
+            <div class="text-2xl font-black text-slate-900 mb-3">₹ 1,200 <span class="text-xs font-normal text-slate-500">/ 50 mins</span></div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Weekly or bi-weekly structured psychotherapy sessions (CBT, ACT, expressive or insight-oriented counseling).
+            </p>
+            <button onclick="openBookingModal('', 'Individual Psychotherapy (Adults)')" class="w-full py-2.5 rounded-xl bg-black hover:bg-slate-800 text-amber-400 font-bold text-xs transition">
+              Book Therapy Slot
+            </button>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-stone-300 shadow-sm">
+            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Diagnostic Battery</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Psychological Assessment</h3>
+            <div class="text-2xl font-black text-amber-600 mb-3">₹ 3,500 – ₹ 5,500 <span class="text-xs font-normal text-slate-500">/ Complete</span></div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Includes test administration, standardized scoring, differential diagnostic analysis, and an official signed clinical report.
+            </p>
+            <button onclick="openBookingModal('', 'Neurodevelopmental Assessment (ADHD / Autism / LD)')" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+              Book Assessment Battery
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Advance Payment Guarantee Banner -->
+        <div class="bg-amber-100/70 border border-amber-300 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-amber-950">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-clock-rotate-left text-xl text-amber-800"></i>
+            <div>
+              <span class="font-bold block">Rescheduling & Cancellation Protection</span>
+              <span class="text-[11px] text-amber-900/80">Sessions can be rescheduled without penalty up to 24 hours prior to appointment time.</span>
+            </div>
+          </div>
+          <span class="font-mono text-amber-900 text-[11px] font-bold bg-white px-3 py-1 rounded-md border border-amber-200">
+            UPI: 9818390769@okaxis
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dilasa FAQ Accordion Section -->
+    <section id="dilasa-faq" class="py-16 sm:py-20 bg-white">
+      <div class="site-container max-w-3xl">
+        
+        <div class="text-center mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Client Support</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          
+          <div class="border border-stone-200 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion('faq1')" class="w-full px-5 py-4 text-left font-bold text-slate-900 bg-[#FCFBF7] flex justify-between items-center">
+              <span>Is what I share in my therapy or assessment strictly confidential?</span>
+              <i id="faq1-icon" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+            </button>
+            <div id="faq1" class="hidden px-5 py-4 text-slate-600 border-t border-stone-200 leading-relaxed bg-white">
+              Yes, absolutely. DILASA adheres strictly to the clinical ethics of the Rehabilitation Council of India and international psychological bodies. What you discuss with your psychologist remains strictly confidential, with legal exceptions only in cases of imminent risk of severe harm to self or others.
+            </div>
+          </div>
+
+          <div class="border border-stone-200 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion('faq2')" class="w-full px-5 py-4 text-left font-bold text-slate-900 bg-[#FCFBF7] flex justify-between items-center">
+              <span>Can I choose between in-person sessions in Srinagar and online video therapy?</span>
+              <i id="faq2-icon" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+            </button>
+            <div id="faq2" class="hidden px-5 py-4 text-slate-600 border-t border-stone-200 leading-relaxed bg-white">
+              Yes. You can attend in person at our clinic (22, Mehjoor Nagar Ram Bagh Bund, Srinagar), or you can choose secure, encrypted video sessions if you are out of station or prefer consulting from home. Psychological testing batteries requiring physical stimulus kits (e.g. WISC/BKT) must be done in person.
+            </div>
+          </div>
+
+          <div class="border border-stone-200 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion('faq3')" class="w-full px-5 py-4 text-left font-bold text-slate-900 bg-[#FCFBF7] flex justify-between items-center">
+              <span>Why is advance digital payment mandatory?</span>
+              <i id="faq3-icon" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+            </button>
+            <div id="faq3" class="hidden px-5 py-4 text-slate-600 border-t border-stone-200 leading-relaxed bg-white">
+              Because clinical therapy involves reserving a full 50-minute dedicated time slot with an assigned specialist, advance pre-payment ensures genuine commitments and protects clinician schedules from unnotified no-shows.
+            </div>
+          </div>
+
+          <div class="border border-stone-200 rounded-2xl overflow-hidden">
+            <button onclick="toggleAccordion('faq4')" class="w-full px-5 py-4 text-left font-bold text-slate-900 bg-[#FCFBF7] flex justify-between items-center">
+              <span>Are psychological assessment reports valid for schools and universities?</span>
+              <i id="faq4-icon" class="fa-solid fa-chevron-down text-slate-400 text-[10px]"></i>
+            </button>
+            <div id="faq4" class="hidden px-5 py-4 text-slate-600 border-t border-stone-200 leading-relaxed bg-white">
+              Yes. Our formal diagnostic assessment reports are signed by licensed clinical psychologists and are fully valid for school Individualized Education Plans (IEP), CBSE/ICSE board extra-time accommodations, and medical consultations.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 24/7 Crisis Disclaimer -->
+        <div class="mt-8 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 text-[11px] leading-relaxed flex items-start gap-3">
+          <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base mt-0.5"></i>
+          <div>
+            <strong>Emergency & Crisis Note:</strong> DILASA provides outpatient scheduled therapy and is not an emergency hospital ward. If you or someone you know is in acute danger of self-harm, please visit the SMHS Hospital Emergency (Psychiatry Ward) in Srinagar immediately, or dial the national Tele-MANAS helpline at <strong>14416</strong> or <strong>1800-891-4416</strong> (24/7 Toll-Free).
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dilasa Footer -->
+    <footer class="bg-[#121212] text-white py-14 border-t border-neutral-800">
+      <div class="site-container">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-neutral-800">
+          
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-full bg-amber-400 text-black flex items-center justify-center font-black">
+                <i class="fa-solid fa-brain text-sm"></i>
+              </div>
+              <span class="font-bold text-lg tracking-tight">DILASA Clinic</span>
+            </div>
+            <p class="text-xs text-neutral-400 leading-relaxed max-w-sm mb-4">
+              DILASA Institute for Psychological Services for Children and Adults. Clinical psychology, psychotherapy, and standardized diagnostics.
+            </p>
+            <div class="text-xs text-neutral-300 space-y-1">
+              <div><strong>Address:</strong> 22, Mehjoor Nagar Ram Bagh Bund, Ram Bagh, Srinagar, J&K, 190001</div>
+              <div><strong>Appointments:</strong> +91 9818390769 | <strong>Email:</strong> dilasamentalhealth@gmail.com</div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3">Clinical Care</h4>
+            <ul class="space-y-2 text-xs text-neutral-400">
+              <li><a href="#dilasa-specialties" class="hover:text-white transition">Individual Therapy</a></li>
+              <li><a href="#dilasa-specialties" class="hover:text-white transition">Child & Youth Counseling</a></li>
+              <li><a href="#dilasa-assessments" class="hover:text-white transition">Diagnostic Testing Batteries</a></li>
+              <li><a href="#dilasa-fees" class="hover:text-white transition">Fees & Digital Advance Pay</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3">Organization Wing</h4>
+            <ul class="space-y-2 text-xs text-neutral-400">
+              <li>
+                <button onclick="switchActiveView('openflow')" class="text-amber-400 hover:underline text-left">
+                  OpenFlow Therapy (Main Org) &rarr;
+                </button>
+              </li>
+              <li><span class="text-[11px] text-neutral-500">Campus Drug Prevention Frameworks</span></li>
+              <li><span class="text-[11px] text-neutral-500">Social-Emotional Learning (SEL)</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-neutral-500">
+          <div>&copy; 2026 DILASA Institute for Psychological Services. All rights reserved.</div>
+          <div class="flex gap-4">
+            <span>Confidentiality Guaranteed</span>
+            <span>RCI Guidelines Compliant</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. MODAL A: INTAKE & APPOINTMENT BOOKING WITH DYNAMIC FEE CALCULATION      -->
+  <!-- ========================================================================= -->
+  <div id="bookingModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-stone-200 overflow-hidden relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Header -->
+      <div class="bg-[#121212] text-white p-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-amber-400 text-black flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm text-white">Book Your Clinical Appointment</h3>
+            <p class="text-[10px] text-amber-400">DILASA Institute • Advance Digital Confirmation</p>
+          </div>
+        </div>
+        <button onclick="closeBookingModal()" class="text-neutral-400 hover:text-white text-lg px-2">
+          &times;
+        </button>
+      </div>
+
+      <!-- Booking Form -->
+      <form id="appointmentForm" onsubmit="handleAppointmentSubmit(event)" class="p-6 space-y-4 text-xs">
+        
+        <!-- Step 1: Patient Details -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Full Name *</label>
+            <input type="text" id="patientName" required placeholder="Your full name" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">WhatsApp Phone *</label>
+            <input type="tel" id="patientPhone" required placeholder="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Email Address *</label>
+          <input type="email" id="patientEmail" required placeholder="For session link & confidential receipt" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+
+        <!-- Service & Fee Auto-Calculator -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Service / Assessment *</label>
+            <select id="serviceSelect" onchange="updateDynamicFee()" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white font-medium">
+              <option value="Clinical Intake Consultation">Clinical Intake Consultation</option>
+              <option value="Individual Psychotherapy (Adults)">Individual Psychotherapy (Adults)</option>
+              <option value="Child & Adolescent Counseling">Child & Adolescent Counseling</option>
+              <option value="Trauma & Grief Recovery">Trauma & Grief Recovery</option>
+              <option value="Couples & Family Therapy">Couples & Family Therapy</option>
+              <option value="Neurodevelopmental Assessment (ADHD / Autism / LD)">Neurodevelopmental Assessment (ADHD/Autism)</option>
+              <option value="Adult Psychodiagnostic & Personality Testing">Adult Psychodiagnostic Testing</option>
+              <option value="Neuropsychological Cognitive Screening">Neuropsychological Screening</option>
+              <option value="Aptitude & Vocational Profiling">Aptitude & Career Profiling</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Clinician Preference *</label>
+            <select id="doctorSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white font-medium">
+              <option value="Any Available Specialist">Any Available Qualified Specialist</option>
+              <option value="Wijdan Haider">Wijdan Haider (MD & Psychologist)</option>
+              <option value="Dr. Muzafer Khan">Dr. Muzafer Khan (Clinical Psychologist)</option>
+              <option value="Masfah Aslam Shah">Masfah Aslam Shah (Counseling Psychologist)</option>
+              <option value="Kulsum Bhat">Kulsum Bhat (Counseling Psychologist)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Consultation Format & Preferred Timing -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Consultation Mode *</label>
+            <select id="consultationMode" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white font-medium">
+              <option value="In-Person (Srinagar Clinic)">In-Person (Ram Bagh, Srinagar)</option>
+              <option value="Encrypted Video (Tele-Therapy)">Encrypted Online Video Session</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 uppercase tracking-wider text-[10px] mb-1">Preferred Slot *</label>
+            <input type="datetime-local" id="slotTime" required class="w-full px-3.5 py-2 rounded-xl border border-stone-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white">
+          </div>
+        </div>
+
+        <!-- Mandatory Digital Advance Payment Selector -->
+        <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-300 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-900 text-xs uppercase tracking-wider">Mandatory Advance Booking Fee</span>
+            <span id="calculatedFeeDisplay" class="font-black text-base text-amber-900">₹ 1,500</span>
+          </div>
+
+          <p class="text-[10px] text-slate-500">
+            Select your digital advance payment channel to secure and confirm this time slot immediately:
+          </p>
+
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-2 p-2.5 rounded-xl border-2 border-amber-500 bg-white cursor-pointer">
+              <input type="radio" name="paymentMethod" value="upi" checked class="accent-amber-600">
+              <span class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+                <i class="fa-solid fa-qrcode text-amber-600"></i> Instant UPI / QR
+              </span>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-stone-300 bg-white cursor-pointer hover:border-amber-400">
+              <input type="radio" name="paymentMethod" value="gateway" class="accent-amber-600">
+              <span class="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+                <i class="fa-solid fa-credit-card text-slate-700"></i> Cards / NetBanking
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-2 pt-1 text-[11px] text-slate-600">
+          <input type="checkbox" required id="consentCheck" class="mt-0.5 rounded text-amber-600 focus:ring-amber-500">
+          <label for="consentCheck">
+            I consent to DILASA clinical intake protocols and acknowledge that advance pre-payment is required to lock my slot.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-smooth w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-lock text-xs"></i>
+          <span>Lock Slot & Proceed to Digital Payment</span>
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 4. MODAL B: DIGITAL ADVANCE PAYMENT MODAL (UPI & GATEWAY)                 -->
+  <!-- ========================================================================= -->
+  <div id="paymentModal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-stone-200 overflow-hidden relative">
+      
+      <div class="bg-[#121212] text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <span class="font-bold text-xs">Secure Payment Gateway</span>
+        </div>
+        <button onclick="closePaymentModal()" class="text-neutral-400 hover:text-white text-base px-2">
+          &times;
+        </button>
+      </div>
+
+      <div class="p-6 text-center space-y-4">
+        
+        <div>
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Payable Amount</span>
+          <div id="paymentAmountText" class="text-3xl font-black text-slate-900 mt-0.5">₹ 1,500</div>
+          <p id="paymentServiceSummary" class="text-xs text-slate-600 mt-1">Clinical Intake Consultation</p>
+        </div>
+
+        <!-- Dynamic QR Code & UPI Deep-Link View -->
+        <div id="upiPaymentBox" class="p-5 rounded-2xl bg-[#FCFBF7] border border-amber-300">
+          
+          <div class="w-48 h-48 mx-auto bg-white p-3 rounded-xl border border-stone-200 shadow-inner flex flex-col items-center justify-center relative mb-3">
+            <!-- Simulated High-Precision QR Canvas -->
+            <svg viewBox="0 0 100 100" class="w-full h-full text-slate-900" fill="currentColor">
+              <!-- Finder Patterns -->
+              <rect x="5" y="5" width="26" height="26" rx="3" fill="#121212"/>
+              <rect x="9" y="9" width="18" height="18" fill="white"/>
+              <rect x="13" y="13" width="10" height="10" fill="#121212"/>
+
+              <rect x="69" y="5" width="26" height="26" rx="3" fill="#121212"/>
+              <rect x="73" y="9" width="18" height="18" fill="white"/>
+              <rect x="77" y="13" width="10" height="10" fill="#121212"/>
+
+              <rect x="5" y="69" width="26" height="26" rx="3" fill="#121212"/>
+              <rect x="9" y="73" width="18" height="18" fill="white"/>
+              <rect x="13" y="77" width="10" height="10" fill="#121212"/>
+
+              <!-- Simulated Dense QR Pixels -->
+              <circle cx="50" cy="50" r="8" fill="#FAA81A"/>
+              <rect x="36" y="10" width="6" height="6"/>
+              <rect x="46" y="10" width="6" height="6"/>
+              <rect x="56" y="10" width="6" height="6"/>
+              <rect x="36" y="24" width="6" height="6"/>
+              <rect x="46" y="30" width="6" height="6"/>
+              <rect x="56" y="24" width="6" height="6"/>
+              <rect x="10" y="44" width="6" height="6"/>
+              <rect x="22" y="44" width="6" height="6"/>
+              <rect x="34" y="44" width="6" height="6"/>
+              <rect x="66" y="44" width="6" height="6"/>
+              <rect x="78" y="44" width="6" height="6"/>
+              <rect x="44" y="66" width="6" height="6"/>
+              <rect x="54" y="76" width="6" height="6"/>
+              <rect x="64" y="66" width="6" height="6"/>
+              <rect x="76" y="76" width="6" height="6"/>
+              <rect x="86" y="66" width="6" height="6"/>
+            </svg>
+            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-1">Scan via any UPI App</span>
+          </div>
+
+          <div class="flex items-center justify-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-stone-200 text-xs font-mono font-bold text-slate-800 mb-3">
+            <span>9818390769@okaxis</span>
+            <button onclick="copyUpiId()" class="text-amber-700 hover:text-amber-900 text-[11px] underline">Copy</button>
+          </div>
+
+          <!-- Deep Link for Mobile Devices -->
+          <div class="flex justify-center gap-2 text-xs">
+            <a id="upiDeepLink" href="upi://pay?pa=9818390769@okaxis&pn=Dilasa%20Institute&cu=INR" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <span>Open in GPay / PhonePe / Paytm</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Verification Ref Field -->
+        <div class="text-left space-y-2">
+          <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider">
+            UPI Ref / UTR / Transaction ID (Optional for Instant Verification)
+          </label>
+          <input type="text" id="transactionRef" placeholder="e.g. 402918239012" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+
+        <button onclick="completePaymentVerification()" class="btn-smooth w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>I Have Completed Payment</span>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 5. TOAST NOTIFICATION CONTAINER                                           -->
+  <!-- ========================================================================= -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs">
+      <div id="toastIcon" class="w-6 h-6 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold text-xs">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <div>
+        <span id="toastTitle" class="font-bold block text-white">Success</span>
+        <span id="toastMsg" class="text-slate-300 text-[11px]">Appointment booked and confirmed.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 6. JAVASCRIPT: CONTROLLER, MODALS, ACCORDIONS, PROTOCOLS                  -->
+  <!-- ========================================================================= -->
+  <script>
+    // State management
+    let activeSiteView = 'openflow';
+    
+    // Fee Schedule Lookup Table
+    const feeLookup = {
+      'Clinical Intake Consultation': '₹ 1,500',
+      'Individual Psychotherapy (Adults)': '₹ 1,200',
+      'Child & Adolescent Counseling': '₹ 1,200',
+      'Trauma & Grief Recovery': '₹ 1,500',
+      'Couples & Family Therapy': '₹ 2,000',
+      'Neurodevelopmental Assessment (ADHD / Autism / LD)': '₹ 4,500',
+      'Adult Psychodiagnostic & Personality Testing': '₹ 4,000',
+      'Neuropsychological Cognitive Screening': '₹ 3,500',
+      'Aptitude & Vocational Profiling': '₹ 2,500'
+    };
+
+    // View Switcher Function
+    function switchActiveView(viewName) {
+      const viewOpenFlow = document.getElementById('viewOpenFlow');
+      const viewDilasa = document.getElementById('viewDilasa');
+      const btnViewOpenFlow = document.getElementById('btnViewOpenFlow');
+      const btnViewDilasa = document.getElementById('btnViewDilasa');
+      const badge = document.getElementById('activeDomainBadge');
+
+      if (viewName === 'dilasa') {
+        activeSiteView = 'dilasa';
+        viewOpenFlow.classList.add('hidden');
+        viewDilasa.classList.remove('hidden');
+
+        btnViewOpenFlow.className = 'flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition text-slate-300 hover:text-white hover:bg-slate-800';
+        btnViewDilasa.className = 'flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition bg-amber-500 text-black shadow-sm font-bold';
+        
+        badge.innerText = 'clinic.openflowtherapy.org';
+        badge.className = 'text-amber-400 font-bold';
+      } else {
+        activeSiteView = 'openflow';
+        viewDilasa.classList.add('hidden');
+        viewOpenFlow.classList.remove('hidden');
+
+        btnViewOpenFlow.className = 'flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition bg-[#064451] text-white shadow-sm font-bold';
+        btnViewDilasa.className = 'flex items-center gap-2 px-3 py-1.5 rounded-md font-semibold text-xs transition text-slate-300 hover:text-white hover:bg-slate-800';
+        
+        badge.innerText = 'openflowtherapy.org';
+        badge.className = 'text-emerald-400 font-mono';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Booking Modal Triggers
+    function openBookingModal(clinicianName, serviceName) {
+      const modal = document.getElementById('bookingModal');
+      const doctorSelect = document.getElementById('doctorSelect');
+      const serviceSelect = document.getElementById('serviceSelect');
+
+      if (clinicianName && doctorSelect) {
+        doctorSelect.value = clinicianName;
+      }
+      if (serviceName && serviceSelect) {
+        serviceSelect.value = serviceName;
+      }
+
+      updateDynamicFee();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('bookingModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Dynamic Fee Calculation
+    function updateDynamicFee() {
+      const serviceSelect = document.getElementById('serviceSelect');
+      const feeDisplay = document.getElementById('calculatedFeeDisplay');
+      const val = serviceSelect.value;
+      const fee = feeLookup[val] || '₹ 1,500';
+      feeDisplay.innerText = fee;
+    }
+
+    // Handle Appointment Form Submission -> Opens Digital Payment Sheet
+    function handleAppointmentSubmit(e) {
+      e.preventDefault();
+      
+      const serviceName = document.getElementById('serviceSelect').value;
+      const fee = feeLookup[serviceName] || '₹ 1,500';
+
+      closeBookingModal();
+      openPaymentModal(fee, serviceName);
+    }
+
+    // Digital Payment Modal Functions
+    function openPaymentModal(fee, serviceName) {
+      const payModal = document.getElementById('paymentModal');
+      document.getElementById('paymentAmountText').innerText = fee;
+      document.getElementById('paymentServiceSummary').innerText = serviceName;
+
+      // Update deep-link amount
+      const cleanAmt = fee.replace(/[^0-9]/g, '');
+      const deepLink = document.getElementById('upiDeepLink');
+      deepLink.href = `upi://pay?pa=9818390769@okaxis&pn=Dilasa%20Institute&am=${cleanAmt}&cu=INR`;
+
+      payModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePaymentModal() {
+      const payModal = document.getElementById('paymentModal');
+      payModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function completePaymentVerification() {
+      closePaymentModal();
+      showToast('Appointment Confirmed!', 'Your advance payment has been registered. Our clinic desk will contact you via WhatsApp with appointment room details.');
+    }
+
+    // Copy UPI ID helper
+    function copyUpiId() {
+      const upiId = '9818390769@okaxis';
+      const tempInput = document.createElement('input');
+      tempInput.value = upiId;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast('UPI ID Copied', '9818390769@okaxis copied to clipboard');
+    }
+
+    // FAQ Accordion Toggle
+    function toggleAccordion(id) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById(id + '-icon');
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+      }
+    }
+
+    // Toast Notification Utility
+    function showToast(title, message) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastMsg').innerText = message;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 5000);
+    }
+
+    // Handle OpenFlow Organization Form
+    function handleOrgFormSubmit(e) {
+      e.preventDefault();
+      showToast('Inquiry Submitted', 'Thank you. The OpenFlow Therapy executive team will review your proposal.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
